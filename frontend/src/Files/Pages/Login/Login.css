@@ -1,0 +1,66 @@
+.login-container {
+  background-image: url("/home/hingaz/Development/Code/My projects/Gamer-Store/frontend/src/Files/Assets/forza-horizon5.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100vh;
+}
+.login {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid red;
+  border-radius: 10px;
+  color: white;
+  padding: 30px;
+  height: 50vh;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
+}
+
+.login .form-group {
+  margin-bottom: 35px;
+}
+
+.login .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.login button {
+  width: 100px;
+  height: 30px;
+  margin-top: 30px;
+  margin-left: 150px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: white;
+  color: red;
+}
+
+.form-p {
+  margin-top: 50px;
+  font-size: 15px;
+}
+.form-link {
+  color: red;
+  text-decoration: none;
+}

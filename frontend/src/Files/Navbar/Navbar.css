@@ -1,0 +1,78 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.header {
+  align-items: center;
+  flex: 0.3;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
+.head {
+  color: red;
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
+.navtags {
+  display: flex;
+  flex: 0.4;
+}
+
+.navtags ul {
+  list-style: none;
+  display: flex;
+  margin-top: -70px;
+  margin-left: -100px;
+}
+
+.navtags ul li {
+  margin-right: 35px;
+}
+
+.user {
+  display: flex;
+  flex: 0.3;
+  margin-left: 300px;
+}
+
+.links {
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+  margin-top: -70px;
+  margin-right: 50px;
+}
+
+.links:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: red;
+  transition: 0.5s;
+  transform: 1.5;
+}
+
+.user-links {
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+  margin-top: -70px;
+  margin-right: 100px;
+}
+
+.user-links:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: red;
+  transition: 0.5s;
+  transform: 1.5;
+}

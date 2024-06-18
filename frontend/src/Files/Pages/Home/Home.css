@@ -1,0 +1,92 @@
+.home {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 3%, transparent),
+    url("/home/hingaz/Development/Code/My projects/Gamer-Store/frontend/src/Files/Assets/homepage.jpg");
+  width: 80%;
+  height: 100vh;
+  color: red;
+  padding: 20px;
+  margin-left: 400px;
+}
+.headers {
+  margin-top: 150px;
+  background-color: transparent;
+}
+.h1 {
+  color: white;
+  margin-left: -200px;
+  background-color: transparent;
+}
+
+.h2 {
+  background-color: transparent;
+  font-size: 50px;
+  margin-left: -200px;
+}
+
+.description {
+  width: 400px;
+  margin-left: -200px;
+  color: white;
+  background-color: transparent;
+}
+
+.description p {
+  background-color: transparent;
+}
+
+.start {
+  background-color: transparent;
+}
+
+.start button {
+  width: 400px;
+  height: 80px;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 150px;
+  margin-left: 300px;
+  margin-bottom: 100px;
+}
+
+.start button p {
+  background-color: transparent;
+  margin-top: 65px;
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.start button:hover {
+  color: red;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.shop-icon {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  margin-top: -30px;
+}
+
+.social-icons {
+  background-color: transparent;
+  font-size: 50px;
+  cursor: pointer;
+  color: white;
+  margin-left: -230px;
+}
+
+.icon {
+  margin-right: 20px;
+}
+
+.icon:hover {
+  color: red;
+  transition: 0.5s;
+}

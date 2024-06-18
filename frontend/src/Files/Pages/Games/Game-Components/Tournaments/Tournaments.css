@@ -1,0 +1,41 @@
+.tournaments {
+  padding: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+.tournaments h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.tournaments-list {
+  gap: 20px;
+  justify-content: center;
+}
+
+.tournament-card {
+  background-color: transparent;
+  border: 3px solid white;
+  box-shadow: -5px -5px 75px rgba(255, 0, 0, 0.7),
+    5px 5px 75px rgba(255, 0, 0, 0.7);
+  border-radius: 20px;
+  margin-bottom: 40px;
+  padding: 16px;
+  width: 700px;
+}
+
+.tournament-card h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: red;
+}
+
+.tournament-card p {
+  margin: 8px 0;
+}
+
+.tournament-card p strong {
+  color: #555;
+}

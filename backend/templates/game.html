@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload Example</title>
+    <style>
+      .ok {
+        font-size: 20px;
+      }
+      .op {
+        font-size: 20px;
+        margin-left: -70px;
+        font-weight: bold;
+        background-color: yellow;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <h1>UPLOADING GAME DATA</h1>
+      <form method="POST" action="/upload-game" enctype="multipart/form-data">
+        <label for="image">Image:</label><br />
+        <input
+          class="ok"
+          type="file"
+          name="image"
+          id="image"
+          required
+        /><br /><br />
+
+        <label for="title">Title:</label><br />
+        <input
+          class="ok"
+          type="text"
+          name="title"
+          id="title"
+          required
+        /><br /><br />
+
+        <label for="genre">Genre:</label><br />
+        <input
+          class="ok"
+          type="text"
+          name="genre"
+          id="genre"
+          required
+        /><br /><br />
+
+        <label for="rating">Rating:</label><br />
+        <input
+          class="ok"
+          type="number"
+          name="rating"
+          id="rating"
+          required
+        /><br /><br />
+
+        <label for="description">Description:</label><br />
+        <textarea
+          class="ok"
+          name="description"
+          id="description"
+          required
+        ></textarea
+        ><br /><br />
+
+        <label for="price">Price:</label><br />
+        <input
+          class="ok"
+          type="number"
+          step="0.01"
+          name="price"
+          id="price"
+          required
+        /><br /><br />
+
+        <label for="trailer">Trailer URL:</label><br />
+        <input
+          class="ok"
+          type="text"
+          name="trailer"
+          id="trailer"
+          required
+        /><br /><br />
+
+        <button class="op" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

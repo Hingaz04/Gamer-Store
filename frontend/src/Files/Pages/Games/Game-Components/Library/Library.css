@@ -1,0 +1,58 @@
+.library {
+  margin-left: -100px;
+}
+
+.library h1 {
+  color: white;
+}
+
+.library-top {
+  border: 3px solid white;
+  box-shadow: -5px -5px 75px rgba(255, 0, 0, 0.7),
+    5px 5px 75px rgba(255, 0, 0, 0.7);
+  color: white;
+  background-image: url("/home/hingaz/Development/Code/My projects/Gamer-Store/frontend/src/Files/Assets/call-of-duty-background-tknn7f5vftz4q4n2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 700px;
+  width: 70%;
+  margin-left: 100px;
+  border-radius: 30px;
+}
+
+.library-top h1 {
+  margin-bottom: 30px;
+  background-color: transparent;
+  color: red;
+  padding: 20px;
+}
+
+.library-top .paragraph {
+  background-color: transparent;
+  margin-top: 500px;
+  margin-right: 300px;
+  padding-left: 20px;
+}
+
+.library-top span {
+  background-color: transparent;
+}
+
+.library-bottom {
+  margin-left: 100px;
+}
+.library-bottom h1 {
+  margin-top: 90px;
+}
+
+.game-card-container {
+  color: white;
+  display: flex;
+  flex: 10%;
+}
+
+.genre {
+  color: white;
+  margin-top: 100px;
+}

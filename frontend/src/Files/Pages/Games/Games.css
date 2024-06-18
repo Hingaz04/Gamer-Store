@@ -1,0 +1,21 @@
+.games {
+  display: flex;
+}
+
+.games-sidemenu {
+  width: 400px;
+  margin-right: 150px;
+  flex-shrink: 0;
+}
+
+.games-sidemenu .menu-item {
+  padding: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.games-sidemenu .menu-item.active {
+  font-weight: bold;
+}

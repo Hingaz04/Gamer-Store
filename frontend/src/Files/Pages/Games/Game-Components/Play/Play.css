@@ -1,0 +1,23 @@
+.play {
+  color: white;
+}
+
+.play h1 {
+  color: white;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+.play h2 {
+  color: red;
+}
+
+.play .play-head {
+  color: white;
+  font-size: 40px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}

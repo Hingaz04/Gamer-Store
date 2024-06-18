@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Audiowide", sans-serif;
+  background-color: black;
+  /*background-image: url("/home/hingaz/Development/Code/My projects/Gamer-Store/frontend/src/Files/Assets/home.jpg");*/
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+#root {
+  height: 100%;
+}
