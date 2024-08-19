@@ -1,76 +1,82 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 const SignupForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  async function registerUser(ev) {
+    ev.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/register",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      alert("Registration successful");
+      setRedirect(true);
+    } catch (error) {
+      console.error("Registration failed:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        alert("Registration failed: " + error.response.data.error);
+      } else {
+        alert("Registration failed: Network error");
+      }
+    }
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can handle the form submission, e.g., sending the data to a server
-    console.log("Form data submitted:", formData);
-  };
+  if (redirect) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="container">
       <div className="signup">
         <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={registerUser}>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
+              placeholder=""
+              value={firstName}
+              onChange={(ev) => setFirstName(ev.target.value)}
             />
           </div>
           <div className="form-group">
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
+              placeholder=""
+              value={lastName}
+              onChange={(ev) => setLastName(ev.target.value)}
             />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
+              placeholder=""
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
             />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
+              placeholder=""
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
             />
           </div>
           <button type="submit">Sign Up</button>

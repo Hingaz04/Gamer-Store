@@ -1,48 +1,64 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { UserContext } from "../../../UserContext";
 
 function Login() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
+  const { setUser } = useContext(UserContext);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target.value;
-    setFormData({ ...formData, [name]: value });
-  };
+  async function loginUser(ev) {
+    ev.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      setUser(data);
+      alert("Login successful");
+      setRedirect(true);
+    } catch (error) {
+      console.error("Login failed:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        alert("Login failed: " + error.response.data.message);
+      } else {
+        alert("Login failed: Network error");
+      }
+    }
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can handle the form submission, e.g., sending the data to a server
-    console.log("Form data submitted:", formData);
-  };
+  if (redirect) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="login-container">
       <div className="login">
         <h2>Log in</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={loginUser}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
-              type="text"
-              name="Email"
-              id="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
+              type="email"
+              placeholder=""
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
             />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
+              placeholder=""
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
             />
           </div>
           <button type="submit">Log In</button>
