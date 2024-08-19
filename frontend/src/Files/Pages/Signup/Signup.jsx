@@ -14,7 +14,7 @@ const SignupForm = () => {
     ev.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/register",
+        "http://localhost:4000/register/register",
         {
           email,
           password,

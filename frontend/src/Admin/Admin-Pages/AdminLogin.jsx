@@ -1,21 +1,22 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
-import "./Login.css";
-import { UserContext } from "../../../UserContext";
+import "../../Files/Pages/Signup/Signup.css";
+import { UserContext } from "../../UserContext";
 
-function Login() {
+function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { setUser } = useContext(UserContext);
 
-  async function loginUser(ev) {
+  async function loginAdmin(ev) {
     ev.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/login/login",
+        "http://localhost:4000/admin/admin-login",
         {
+   
           email,
           password,
         },
@@ -36,13 +37,13 @@ function Login() {
   }
 
   if (redirect) {
-    return <Navigate to="/" />;
+    return <Navigate to="/admin-panel" />;
   }
   return (
     <div className="login-container">
       <div className="login">
         <h2>Log in</h2>
-        <form onSubmit={loginUser}>
+        <form onSubmit={loginAdmin}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -61,23 +62,17 @@ function Login() {
               onChange={(ev) => setPassword(ev.target.value)}
             />
           </div>
-          <button type="submit">Log In</button>
+
+          <button type="submit">Admin Log In </button>
         </form>
         <p className="form-p">
-          Dont have an account?{" "}
-          <Link className="form-link" to="/signup">
-            Sign-in
-          </Link>
-        </p>
-        <p className="form-p">
-          Log in as admin?{" "}
-          <Link className="form-link" to="/admin-login">
-            Admin
+          Not an admin?{" "}
+          <Link className="form-link" to="/login">
+            User Log In
           </Link>
         </p>
       </div>
     </div>
   );
 }
-
-export default Login;
+export default AdminLogin;

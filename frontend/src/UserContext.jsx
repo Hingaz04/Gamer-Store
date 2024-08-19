@@ -5,6 +5,7 @@ export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(null);
 
@@ -13,6 +14,12 @@ export function UserContextProvider({ children }) {
       try {
         const { data } = await axios.get("http://localhost:4000/profile");
         setUser(data);
+
+        if (data && data.role === "admin") {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
       } catch (err) {
         setError(err);
         console.error("Error fetching user data:", err);
@@ -27,7 +34,7 @@ export function UserContextProvider({ children }) {
   }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, ready, error }}>
+    <UserContext.Provider value={{ user, setUser, isAdmin, ready, error }}>
       {children}
     </UserContext.Provider>
   );

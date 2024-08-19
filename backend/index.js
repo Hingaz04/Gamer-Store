@@ -4,8 +4,8 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const authRoutes = require("./routes/auth");
-const profileRoutes = require("./routes/profile");
+const userRoutes = require("./routes/authentication");
+const adminRoutes = require("./controllers/adminController");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -26,8 +26,10 @@ app.use(
   })
 );
 
-app.use("/auth", authRoutes);
-app.use("/profile", profileRoutes);
+app.use("/admin", adminRoutes);
+app.use("/register", userRoutes);
+app.use("/login", userRoutes);
+app.use("/logout", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
