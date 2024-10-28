@@ -2,13 +2,11 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
-import { UserContext } from "../../../UserContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const { setUser } = useContext(UserContext);
 
   async function loginUser(ev) {
     ev.preventDefault();

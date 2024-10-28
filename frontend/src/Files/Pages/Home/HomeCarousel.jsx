@@ -11,7 +11,10 @@ function HomeCarousel({ game }) {
   };
   return (
     <div className="home-slider">
-      <img src={game.img} alt="home image" />
+      <img
+        src={`http://127.0.0.1:5000/games/${game.image_url}`}
+        alt={game.title}
+      />
       <div className={`video ${active ? "active" : undefined}`}>
         <iframe
           width="1280"

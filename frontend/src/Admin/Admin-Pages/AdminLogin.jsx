@@ -1,49 +1,59 @@
-import React, { useContext, useState } from "react";
-import { Navigate, Link } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../../Auth";
 import "../../Files/Pages/Signup/Signup.css";
-import { UserContext } from "../../UserContext";
 
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
-  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  async function loginAdmin(ev) {
-    ev.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "http://localhost:4000/admin/admin-login",
-        {
-   
-          email,
-          password,
-        },
-        { withCredentials: true }
-      );
-      setUser(data);
-      alert("Login successful");
-      setRedirect(true);
-    } catch (error) {
-      console.error("Login failed:", error);
-      if (error.response) {
-        console.error("Response data:", error.response.data);
-        alert("Login failed: " + error.response.data.message);
-      } else {
-        alert("Login failed: Network error");
-      }
-    }
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  if (redirect) {
-    return <Navigate to="/admin-panel" />;
-  }
+    const body = {
+      email,
+      password,
+    };
+
+    fetch("http://127.0.0.1:5000/admin/admin-login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not okay");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data["Access Token"] && data["Refresh Token"]) {
+          login({
+            accessToken: data["Access Token"],
+            refreshToken: data["Refresh Token"],
+          });
+          console.log("Login successful, navigating to admin panel.");
+          navigate("/admin-panel");
+        } else {
+          alert(
+            "Login failed: Invalid email or password. Please input correct credentials"
+          );
+        }
+      })
+
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        alert("Login failed: Invalid email or password. Please try again.");
+      });
+  };
   return (
     <div className="login-container">
       <div className="login">
-        <h2>Log in</h2>
-        <form onSubmit={loginAdmin}>
+        <h2>Admin Log in</h2>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input

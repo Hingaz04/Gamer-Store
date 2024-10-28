@@ -7,7 +7,9 @@ import Games from "./Files/Pages/Games/Games";
 import Accessories from "./Files/Pages/Accessories/Accessories";
 import { Routes, Route } from "react-router-dom";
 import AdminLogin from "./Admin/Admin-Pages/AdminLogin";
-import AdminPanel from "./Admin/Admin-Pages/AdminPanel";
+import AdminPanel from "./Admin/Admin-Pages/Admin-Panel/AdminPanel";
+import GamesForm from "./Admin/Admin-Pages/Admin-Components/GamesForm";
+import AccessoriesForm from "./Admin/Admin-Pages/Admin-Components/AccessoriesForm";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/admin-panel" element={<AdminPanel />} />
         <Route path="/games" element={<Games />} />
         <Route path="/accessories" element={<Accessories />} />
+        <Route path="/game-manager" element={<GamesForm />} />
+        <Route path="/accessory-manager" element={<AccessoriesForm />} />
       </Routes>
     </div>
   );

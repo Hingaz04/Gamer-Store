@@ -36,9 +36,12 @@ class Game(db.Model):
                           default='default_image.jpg')
     title = db.Column(db.String, unique=True)
     genre = db.Column(db.String, nullable=False)
+    level = db.Column(db.String, nullable=False)
+    trailer = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer,  nullable=False)
+
 
     def __repr__(self):
         return f"<Game {self.title}>"
