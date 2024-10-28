@@ -3,76 +3,78 @@
   justify-content: space-between;
   align-items: center;
   color: white;
+  max-width: 100%; 
+  padding: 0 20px; 
+  box-sizing: border-box; 
 }
 
 .header {
-  align-items: center;
-  flex: 0.3;
+ display: inline;
+align-items: center;
 }
 
 .logo {
-  width: 150px;
-  height: 150px;
-  margin-left: 150px;
-  margin-top: 20px;
+  width: 150px; 
+  height: auto;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
 .head {
   color: red;
-  margin-left: 150px;
-  margin-top: 20px;
+  margin-top: -20px;
 }
 
+.head1{
+  margin-left: 10px;
+   color: red;
+}
 .navtags {
+  flex: 1; 
   display: flex;
-  flex: 0.4;
+  justify-content: center;
+  align-items: center;
+  margin-left: -100px;
 }
 
 .navtags ul {
   list-style: none;
   display: flex;
-  margin-top: -70px;
-  margin-left: -100px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-right: 200px;
 }
 
 .navtags ul li {
-  margin-right: 35px;
+  margin-right: 65px;
 }
 
 .user {
   display: flex;
-  flex: 0.3;
-  margin-left: 300px;
+  align-items: center;
 }
 
-.links {
+.links, .user-links, .logout {
   text-decoration: none;
   background-color: transparent;
   color: white;
-  margin-top: -70px;
-  margin-right: 50px;
+  margin-right: 20px;
 }
 
-.links:hover {
-  text-decoration: none;
-  background-color: transparent;
+.links:hover, .user-links:hover, .logout:hover {
   color: red;
   transition: 0.5s;
-  transform: 1.5;
 }
 
 .user-links {
-  text-decoration: none;
-  background-color: transparent;
-  color: white;
-  margin-top: -70px;
-  margin-right: 100px;
+  margin-right: 20px; 
 }
 
-.user-links:hover {
-  text-decoration: none;
-  background-color: transparent;
+.logout {
   color: red;
-  transition: 0.5s;
-  transform: 1.5;
+}
+
+.logout:hover {
+  color: white;
 }

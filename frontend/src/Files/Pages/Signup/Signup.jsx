@@ -4,8 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
 const SignupForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
@@ -16,6 +15,7 @@ const SignupForm = () => {
       const { data } = await axios.post(
         "http://localhost:4000/register/register",
         {
+          userName,
           email,
           password,
         },
@@ -44,23 +44,14 @@ const SignupForm = () => {
         <h2>Sign Up</h2>
         <form onSubmit={registerUser}>
           <div className="form-group">
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">User Name</label>
             <input
               type="text"
               placeholder=""
-              value={firstName}
-              onChange={(ev) => setFirstName(ev.target.value)}
+              value={userName}
+              onChange={(ev) => setUserName(ev.target.value)}
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              placeholder=""
-              value={lastName}
-              onChange={(ev) => setLastName(ev.target.value)}
-            />
-          </div>
+    </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input

@@ -12,7 +12,7 @@ import AdminPanel from "./Admin/Admin-Pages/AdminPanel";
 function App() {
   return (
     <div className="app">
-      <Navbar />
+      <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
