@@ -1,36 +1,63 @@
+:root {
+  --bg-color: black;       /* Dark background color */
+  --text-color: #ffffff;     /* White text color */
+  --accent-color: red;   /* Neon red accent */
+  --hover-color: red;    /* Neon orange hover color */
+  --neon-green: white;     /* Neon green for active states */
+}
+
+/* Navbar Container */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
-  max-width: 100%; 
-  padding: 0 20px; 
-  box-sizing: border-box; 
+  color: var(--text-color);
+  max-width: 100%;
+  padding: 10px 20px;
+  background-color: var(--bg-color);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* Header Styles */
 .header {
- display: inline;
-align-items: center;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center;
+  margin-right: 150px;
 }
 
 .logo {
-  width: 150px; 
+  width: 150px;
   height: auto;
   margin-right: 20px;
   margin-top: 10px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.head {
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.head2 {
+  font-weight: bold;
   color: red;
-  margin-top: -20px;
+  margin-top: -25px;
 }
 
-.head1{
-  margin-left: 10px;
-   color: red;
+.head1 {
+  font-size: 1.8rem;
+  color: gold;
+  margin-left: 7px;
 }
+
+
+/* Navtags Styles */
 .navtags {
-  flex: 1; 
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,33 +75,113 @@ align-items: center;
 
 .navtags ul li {
   margin-right: 65px;
+
 }
 
+/* Link Styles with Neon Effect */
+.links, .user-links, .logout {
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--text-color);
+  margin-right: 20px;
+  font-size: 1.3rem;
+  margin-right: -30px;
+  transition: color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+
+/* Active Link Neon Style */
+.links.active, .user-links.active, .logout.active {
+  color: var(--neon-green); /* Neon green color for active link text */
+  box-shadow: 0 0 8px var(--neon-green), 0 0 15px rgba(0, 255, 195, 2), 0 0 20px rgba(0, 255, 195, 2); /* Neon glow */
+  background: linear-gradient(145deg, #1a1a28, #212133); /* Background gradient to match SideMenu styling */
+  border-radius: 0px;
+  padding: 5px 10px;
+}
+
+/* Link Hover Effect */
+.links:hover, .user-links:hover, .logout:hover {
+  color: var(--hover-color);
+  transform: scale(1.4);
+  box-shadow: 0 0 6px var(--hover-color), 0 0 10px rgba(255, 170, 0, 1.5); /* Neon glow effect on hover */
+}
+
+
+/* Hover animations */
+.links:hover, .user-links:hover, .logout:hover {
+  color: var(--hover-color);
+  transform: scale(1.1);
+}
+
+/* Sliding underline effect */
+.links::after, .user-links::after, .logout::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--neon-green);
+  transition: width 0.3s ease;
+}
+
+.links:hover::after, .user-links:hover::after, .logout:hover::after {
+  width: 100%;
+}
+
+/* User Links */
 .user {
   display: flex;
   align-items: center;
 }
 
-.links, .user-links, .logout {
-  text-decoration: none;
-  background-color: transparent;
-  color: white;
-  margin-right: 20px;
-}
-
-.links:hover, .user-links:hover, .logout:hover {
-  color: red;
-  transition: 0.5s;
-}
-
 .user-links {
-  margin-right: 20px; 
+  margin-right: 20px;
+  border: 1px solid var(--accent-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.user-links:hover {
+  background-color: var(--accent-color);
+  color: white;
+  box-shadow: 0 0 8px var(--hover-color), 0 0 12px rgba(255, 170, 0, 0.7);
+}
+
+/* Logout Button */
 .logout {
-  color: red;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .logout:hover {
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 10px var(--accent-color), 0 0 15px rgba(255, 70, 85, 0.7);
+}
+
+/* Animations */
+@keyframes colorCycle {
+  from {
+    color: var(--accent-color);
+  }
+  to {
+    color: var(--hover-color);
+  }
+}
+
+@keyframes colorCycleReverse {
+  from {
+    color: var(--text-color);
+  }
+  to {
+    color: var(--hover-color);
+  }
 }

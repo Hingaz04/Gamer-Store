@@ -32,37 +32,45 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="headers">
-        <h1 className="h1">WELCOME TO THE</h1>
-        <h1 className="h2">NEXT LEVEL</h1>
-        <h1 className="h2">GAMING CENTER</h1>
-      </div>
-      <div className="description">
-        <p>
-          Elevate your gaming experience with our gaming products from video
-          games to consoles. We are the largest and most trusted gaming store
-          and online entertainment throughout Africa and beyond.
-        </p>
-      </div>
-      <div className="start">
-        <button>
-          <Link className="links" to="/signup">
-            <p>SHOP WITH US</p>
-            <FaShopify className="shop-icon" />
-          </Link>
-        </button>
-      </div>
-      <div className="home-carousel">
-        <h1>Top Selections</h1>{" "}
-        <div className="carousel">
-          {loading ? <div>Loading...</div> : <HomeSwiper games={games} />}
+      <div className="home-content">
+        <div className="game-description">
+          <div className="headers">
+            <h1 className="h2">CALL OF DUTY</h1>
+            <h1 className="h1">STEP INTO THE BATTLEFIELD</h1>
+            <h1 className="h3">GEAR UP, SOLDIER!</h1>
+          </div>
+          <div className="description">
+            <p>
+              Join the ranks and experience the ultimate warfare with Call of
+              Duty. From high-stakes missions to intense multiplayer battles,
+              every moment is a fight for survival. Suit up, take on enemies,
+              and become a legend. Your mission starts here—grab your copy now
+              and dominate the battlefield!
+            </p>
+          </div>
+        </div>
+
+        <div className="start">
+          <button className="start-button">
+            <Link className="links-shop" to="/signup">
+              <p>SHOP NOW</p>
+              <FaShopify className="shop-icon" />
+            </Link>
+          </button>
         </div>
       </div>
-
-      <div className="social-icons">
-        <FontAwesomeIcon className="icon" icon={faFacebook} />
-        <FontAwesomeIcon className="icon" icon={faInstagram} />
-        <FontAwesomeIcon className="icon" icon={faTwitter} />
+      <div className="bottom-content">
+        <div className="home-carousel">
+          <h1 className="h2-carousel">Top Selections</h1>
+          <div className="carousel">
+            {loading ? <div>Loading...</div> : <HomeSwiper games={games} />}
+          </div>
+          <div className="social-icons">
+            <FontAwesomeIcon className="icon" icon={faFacebook} />
+            <FontAwesomeIcon className="icon" icon={faInstagram} />
+            <FontAwesomeIcon className="icon" icon={faTwitter} />
+          </div>
+        </div>
       </div>
     </div>
   );

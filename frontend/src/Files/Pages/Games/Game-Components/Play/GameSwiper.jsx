@@ -37,10 +37,11 @@ function GameSwiper({ games }) {
       }}
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className="game-swiper"
+      onSwiper={(swiper) => (window.swiperInstance = swiper)} 
     >
       {games.map((game) => (
         <SwiperSlide key={game._id}>
-          <GameSlide game={game} />
+          <GameSlide game={game} swiperInstance={window.swiperInstance} />{" "}
         </SwiperSlide>
       ))}
     </Swiper>

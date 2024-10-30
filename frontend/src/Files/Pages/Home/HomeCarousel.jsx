@@ -1,21 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HomeCarousel.css";
-import { FaPause } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
+import { FaPause, FaPlay } from "react-icons/fa";
 
-function HomeCarousel({ game }) {
+function HomeCarousel({ game, swiperInstance }) {
   const [active, setActive] = useState(false);
 
-  const handleToggleVideo = () => {
+  const handleToggleVideo = (e) => {
+    e.preventDefault();
     setActive(!active);
   };
+
+  useEffect(() => {
+    if (swiperInstance) {
+      if (active) {
+        swiperInstance.autoplay?.stop();
+      } else {
+        swiperInstance.autoplay?.start();
+      }
+    }
+  }, [active, swiperInstance]);
+
   return (
     <div className="home-slider">
       <img
         src={`http://127.0.0.1:5000/games/${game.image_url}`}
         alt={game.title}
       />
-      <div className={`video ${active ? "active" : undefined}`}>
+      <div className={`video ${active ? "active" : ""}`}>
         <iframe
           width="1280"
           height="720"
@@ -26,7 +37,7 @@ function HomeCarousel({ game }) {
         ></iframe>
       </div>
       <div className="content">
-        <h2>{game.name}</h2>
+        <h2>{game.title}</h2>
         <p>{game.description}</p>
         <div className="buttons">
           <a href="#" className="order-btn">
@@ -34,18 +45,14 @@ function HomeCarousel({ game }) {
           </a>
           <a
             href="#"
-            className={`play-btn ${active ? "active" : undefined}`}
+            className={`play-btn ${active ? "active" : ""}`}
             onClick={handleToggleVideo}
           >
             <span className="pause">
-              <i className="bi bi-pause-fill">
-                <FaPause />
-              </i>
+              <FaPause />
             </span>
             <span className="play">
-              <i className="bi bi-play-fill">
-                <FaPlay />
-              </i>
+              <FaPlay />
             </span>
           </a>
         </div>

@@ -1,96 +1,124 @@
-.home {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 20%, transparent),
-    url("/mnt/c/Users/hhing/Desktop/Hingaz/Code Projects/Gamer-Store/frontend/src/Files/Assets/Counter-strike-2-4.webp");
-  width: 97%;
-  height: 100vh;
+.home-content {
+  background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1.5)), /* Gradient overlay */
+    url("/mnt/c/Users/hhing/Desktop/Hingaz/Code Projects/Gamer-Store/frontend/src/Files/Assets/soldiers-call-of-duty-call-of-duty-modern-warfare-ghost-cod6-2560x1440-architecture-modern-hd-art-wallpaper-preview.jpg");
+  min-height: 100vh;
   color: red;
   padding: 20px;
-  margin-left: 0px;
+  margin-left: 0;
   background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .headers {
-  margin-top: 150px;
+  margin-top: 50px; /* Adjust the margin as needed */
   background-color: transparent;
+  text-align: center; /* Center-align the headers */
 }
+
 .h1 {
   color: white;
-  margin-left: 40px;
-  background-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0), /* Small inner glow */
+               0 0 10px rgba(255, 255, 255, 1.5), /* Medium outer glow */
+               0 0 15px rgba(255, 255, 255, 1.5); /* Larger outer glow */
 }
+
 
 .h2 {
-  background-color: transparent;
-  font-size: 50px;
-  margin-left: 40px;
+  font-size: 40px;
+  color: red;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), /* Red inner glow */
+               0 0 10px rgba(255, 0, 0, 0.5), /* Medium outer red glow */
+               0 0 15px rgba(255, 0, 0, 0.4); /* Larger outer red glow */
 }
+
+.h3 {
+  font-size: 30px;
+  color: gold;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 1.5), /* Red inner glow */
+               0 0 10px rgba(255, 0, 0, 1.5), /* Medium outer red glow */
+               0 0 15px rgba(255, 0, 0, 1.5); /* Larger outer red glow */
+}
+
+
 
 .description {
-  width: 400px;
-  margin-left:40px;
-  color: white;
-  background-color: transparent;
-}
-
-.description p {
-  background-color: transparent;
+  width: 80%; /* Make the description responsive */
+  max-width: 600px; /* Limit max width for readability */
+  margin: 20px auto; /* Center and adjust margin */
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  padding: 20px; /* Add padding for text */
+  border-radius: 10px; /* Rounded corners for softness */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 }
 
 .start {
-  background-color: transparent;
+  margin-top: 40px; /* Space above the button */
+  text-align: center; /* Center the button */
 }
 
-.start button {
+.start-button {
   width: 400px;
   height: 80px;
-  color: white;
-  background-color: red;
+  color: #fff;
+  background-color: #ff3333; /* Bright red */
   border: none;
-  border-radius: 20px;
+  border-radius: 50px; /* Rounded button */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 150px;
-  margin-left: 300px;
-  margin-bottom: 100px;
- 
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
 }
 
-.start button p {
-  background-color: transparent;
-  margin-top: 10px;
-  margin-bottom: 5px;
+.start-button:hover{
+   color: red;
+   background-color: rgb(210, 182, 182);
+}
+.game-description {
+  margin-left: -500px;
+}
+.home-carousel {
+  margin-top: 50px; /* Space above the carousel */
+  text-align: center; /* Center align the carousel title */
+  margin-left: 0px;
+}
+
+.home-carousel{
+  color: white;
   font-size: 30px;
-  margin-left: 30px;
-  font-family: Audiowide;
 }
 
-.start button:hover {
-  color: red;
-  background-color: white;
-  transition: 0.5s;
-}
-
-.shop-icon {
-  background-color: transparent;
-  width: 20px;
-  height: 20px;
-
-}
-
+/* Additional styles for icons */
 .social-icons {
   background-color: transparent;
   font-size: 50px;
+  margin-right: 20px;
+  bottom: 20px; /* Position it at the bottom */
+  left: 20px; /* Align to the right */
   cursor: pointer;
   color: white;
-  margin-left: -230px;
 }
 
-.icon {
-  margin-right: 20px;
+.icon{
+  margin-left: 20px;
 }
 
-.icon:hover {
-  color: red;
-  transition: 0.5s;
+.h2-carousel{
+  margin-top: -60px;
+  color: gold;
+  margin-bottom: -70px;
+}
+
+.links-shop{
+  text-decoration: none;
+  color: white;
+  font-family: audiowide;
 }

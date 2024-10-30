@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="header">
         <img className="logo" src={logo} alt="" />
         <h1 className="head1">HINGZ</h1>
-        <h1 className="head">GAMING</h1>
+        <h1 className="head2">GAMING</h1>
       </div>
       <div className="navtags">
         <ul>

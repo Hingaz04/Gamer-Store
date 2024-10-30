@@ -8,7 +8,7 @@ import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
 import HomeCarousel from "./HomeCarousel";
 
 function HomeSwiper({ games }) {
-  console.log("Games in GameSwiper:", games);
+  console.log("Games in HomeSwiper:", games);
 
   if (!Array.isArray(games) || games.length === 0) {
     return <p>No games available</p>;
@@ -35,10 +35,11 @@ function HomeSwiper({ games }) {
       }}
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className="home-swiper"
+      onSwiper={(swiper) => (window.swiperInstance = swiper)}
     >
       {games.map((game) => (
         <SwiperSlide key={game._id}>
-          <HomeCarousel game={game} />
+          <HomeCarousel game={game} swiperInstance={window.swiperInstance} />{" "}
         </SwiperSlide>
       ))}
     </Swiper>

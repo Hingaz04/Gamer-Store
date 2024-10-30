@@ -6,6 +6,9 @@
   height: 600px;
   margin-left: -20px;
   margin-bottom: -80px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(255, 0, 0, 0.1)); /* Dark overlay with red gradient */
+  border-radius: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8); /* Soft shadow for depth */
 }
 
 .swiper-slide {
@@ -13,8 +16,13 @@
   height: 400px;
   border-radius: 25px;
   border: 3px solid white;
-  box-shadow: -5px -5px 75px rgba(255, 0, 0, 0.7),
+  box-shadow: -5px -5px 75px rgba(255, 0, 0, 0.3),
     5px 5px 75px rgba(255, 0, 0, 0.7);
+  transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+.swiper-slide:hover {
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .game-slider::after {
@@ -24,7 +32,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5); /* Darker overlay */
   border-radius: 30px !important;
 }
 
@@ -37,6 +45,11 @@
   object-fit: cover;
   object-position: center;
   border-radius: 30px !important;
+  transition: transform 0.5s; /* Smooth zoom effect */
+}
+
+.swiper-slide:hover img {
+  transform: scale(1.1); /* Zoom effect on image hover */
 }
 
 .swiper-button-prev,
@@ -44,10 +57,16 @@
   position: absolute;
   height: 50px;
   width: 50px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3); /* More visible buttons */
   border-radius: 50%;
-  backdrop-filter: blur(20px);
-  bottom: 0 !important;
+  backdrop-filter: blur(10px);
+  bottom: 20px !important; /* Adjusted position for better visibility */
+  transition: background 0.3s; /* Transition for hover effect */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(255, 255, 255, 0.6); /* Highlight on hover */
 }
 
 .swiper-button-prev::after,
@@ -65,6 +84,8 @@
 
 .game-slider .content h2 {
   font-size: 3.5rem;
+  color: #ffcc00; /* Bright yellow for title */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for text clarity */
 }
 
 .game-slider .content p {
@@ -80,25 +101,33 @@
 
 .game-slider .content .buttons a {
   text-decoration: none;
-  color: red;
+  color: #ff007f; /* Bright pink for button text */
   text-transform: uppercase;
+  transition: color 0.3s; /* Transition for color change */
 }
 
 .game-slider .content .buttons .order-btn {
   padding: 8px 20px;
-  background: var(--second);
+  background: linear-gradient(135deg, #ff007f, #ffcc00); /* Gradient button */
   border-radius: 10px;
+  color: #fff; /* White text for contrast */
 }
 
 .game-slider .content .buttons .play-btn {
   height: 50px;
   width: 50px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
+  background: rgba(255, 0, 0, 0.7); /* Semi-transparent red */
+  transition: background 0.3s; /* Transition for hover effect */
+}
+
+.game-slider .content .buttons .play-btn:hover {
+  background: rgba(255, 0, 0, 1); /* Full red on hover */
 }
 
 .play-btn .play {

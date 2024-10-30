@@ -36,6 +36,7 @@ function SideMenu({ sectionActive }) {
       target: "forum",
       active: false,
     },
+    
   ]);
 
   const handleNavOnClick = (id, target) => {

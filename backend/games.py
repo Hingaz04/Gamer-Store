@@ -34,6 +34,8 @@ game_model = game_ns.model(
         "image_url": fields.String(),
         "title": fields.String(),
         "genre": fields.String(),
+        "level": fields.String(),
+        "trailer": fields.String(),
         "description": fields.String(),
         "rating": fields.String(),
         "price": fields.String(),
@@ -59,6 +61,8 @@ class GamesResource(Resource):
         image_url = request.files['image_url']
         title = request.form.get('title')
         genre = request.form.get('genre')
+        level = request.form .get('level')
+        trailer = request.form.get('trailer')
         description = request.form.get('description')
         rating = request.form.get('rating')
         price = request.form.get('price')
@@ -76,6 +80,8 @@ class GamesResource(Resource):
             image_url=f"uploads/{image_url_filename}",
             title=title,
             genre=genre,
+            level=level,
+            trailer=trailer,
             description=description,
             rating=rating,
             price=price

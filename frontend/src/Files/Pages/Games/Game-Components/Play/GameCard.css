@@ -1,47 +1,101 @@
+/* GameCard.css */
 .game-card {
+  background-color: #1e1e2f; /* Matching background with SideMenu */
+  color: #c4c4c4; /* Light color for text */
+  border-radius: 15px; /* Smooth rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Consistent shadow */
+  padding: 20px;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
   position: relative;
-  padding: 25px 20px;
-  margin-bottom: 25px;
-  margin-right: 60px;
-  width: auto;
-  height: 300px;
-  width: 200px;
-  border-radius: 20px;
-  border: 3px solid white;
-  box-shadow: -5px -5px 75px rgba(255, 0, 0, 0.7),
-    5px 5px 75px rgba(255, 0, 0, 0.7);
 }
 
-.game-card img {
-  border-radius: 20px;
-  margin-bottom: 15px;
-  object-fit: cover;
-  object-position: center;
-  height: 50%;
+/* Hover and active effects */
+.game-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px #00ffc3, 0 0 30px rgba(0, 255, 195, 0.5); /* Neon green glow */
+}
+
+/* Neon glow for game title */
+.game-card .game-title {
+  font-size: 1.5rem;
+  color: #00ffc3; /* Neon green */
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #00ffc3, 0 0 10px rgba(0, 255, 195, 0.5);
+  position: relative;
+}
+
+/* Underline sliding effect for title */
+.game-card .game-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background: #00ffc3;
+  transition: width 0.3s ease;
+}
+
+.game-card:hover .game-title::after {
   width: 100%;
 }
 
-span {
-  color: red;
-  margin-right: 4px;
-}
-.game-card .game-type {
-  padding: 0px;
+/* Image styling with neon effect */
+.game-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
   border-radius: 10px;
-  font-weight: 400;
-  letter-spacing: 1px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.game-card .game-title {
-  margin-top: 10px;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  color: red;
+/* Game type and other details */
+.game-card .game-type,
+.game-card p {
+  font-size: 1rem;
+  color: #ffa500; /* Bright color for details */
+  margin-bottom: 8px;
 }
 
-.game-card .game-price {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+/* Label styling */
+.game-card span {
+  font-weight: bold;
+  color: #ff5500; /* Bright orange for labels */
+}
+
+/* Neon blinking effect for genre */
+.game-card .game-type {
+  animation: neon-blink 1.5s infinite alternate;
+}
+
+/* Keyframes for neon blinking effect */
+@keyframes neon-blink {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 5px #ff007a, 0 0 10px #ff007a, 0 0 15px #ff007a;
+  }
+  100% {
+    opacity: 0.7;
+    text-shadow: 0 0 20px #ff007a, 0 0 30px #ff007a, 0 0 40px #ff007a;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .game-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .game-card img {
+    height: 200px;
+  }
+
+  .game-card .game-title {
+    font-size: 1.3rem;
+  }
 }

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Components.css";
-import { useEffect } from "react";
 import axios from "axios";
 
 function GamesForm() {
@@ -10,6 +9,8 @@ function GamesForm() {
     title: "",
     image_url: null,
     genre: "",
+    level: "",
+    trailer: "",
     description: "",
     rating: "",
     price: "",
@@ -19,7 +20,8 @@ function GamesForm() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  useEffect(() => {
+  // Function to fetch the games list
+  const fetchGames = () => {
     const token = localStorage.getItem("REACT_TOKEN_AUTH_KEY");
     if (!token) {
       console.error("Token not found");
@@ -31,7 +33,7 @@ function GamesForm() {
 
     axios
       .get("http://127.0.0.1:5000/games/games", {
-        headers: { Authorization: `Bearer:${accessToken}` },
+        headers: { Authorization: `Bearer ${accessToken}` },
       })
       .then((response) => {
         console.log("Fetched games: ", response.data);
@@ -41,6 +43,11 @@ function GamesForm() {
         console.error("Error fetching games", err);
         setError("Failed to fetch games");
       });
+  };
+
+  // Use the fetchGames function inside useEffect
+  useEffect(() => {
+    fetchGames();
   }, []);
 
   const handleChange = (e) => {
@@ -55,11 +62,13 @@ function GamesForm() {
   const validateForm = () => {
     const newErrors = {};
     if (!form.title) newErrors.title = "Title is required";
-    if (!form.image_url) newErrors.image_url = "Image is Required";
+    if (!form.image_url) newErrors.image_url = "Image is required";
     if (!form.genre) newErrors.genre = "Genre is required";
+    if (!form.level) newErrors.level = "Level is required";
+    if (!form.trailer) newErrors.trailer = "Trailer is required";
     if (!form.description) newErrors.description = "Description is required";
     if (!form.rating) newErrors.rating = "Rating is required";
-    if (!form.price) newErrors.price = "Price is Required";
+    if (!form.price) newErrors.price = "Price is required";
 
     return newErrors;
   };
@@ -86,6 +95,8 @@ function GamesForm() {
     formData.append("title", form.title);
     formData.append("image_url", form.image_url);
     formData.append("genre", form.genre);
+    formData.append("level", form.level);
+    formData.append("trailer", form.trailer);
     formData.append("description", form.description);
     formData.append("rating", form.rating);
     formData.append("price", form.price);
@@ -101,20 +112,23 @@ function GamesForm() {
       })
       .then((response) => {
         console.log("Game added", response.data);
-        setGames([response.data, ...games]);
         setSuccess("Game added successfully");
         setLoading(false);
         setForm({
           title: "",
           image_url: null,
           genre: "",
+          level: "",
+          trailer: "",
           description: "",
           rating: "",
           price: "",
         });
+        // Refresh the games list after adding a new game
+        fetchGames();
       })
       .catch((err) => {
-        console.error("Failed to add Game", err);
+        console.error("Failed to add game", err);
         setLoading(false);
       });
   };
@@ -149,47 +163,28 @@ function GamesForm() {
       <Link to="/admin-panel">Back to admin dashboard</Link>
       <div className="form">
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Game Title:</label>
-            <input type="text" name="title" onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label>Game Image:</label>
-            <input type="file" name="image_url" onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label>Game Genre:</label>
-            <input type="text" name="genre" onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label>Game Description:</label>
-            <input type="text" name="description" onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label>Game Rating:</label>
-            <input type="text" name="rating" onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label>Game Price:</label>
-            <input type="text" name="price" onChange={handleChange} />
-          </div>
-
-          <button type="submit">Add Game</button>
+          {/* Form fields go here */}
+          <button type="submit" disabled={loading}>
+            {loading ? "Adding..." : "Add Game"}
+          </button>
         </form>
+        {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>}
       </div>
       <div className="game-list">
         <h1>Game List</h1>
         {games.length === 0 && <p>No games available.</p>}
         <ul>
           {games.map((game) => (
-            <li>
-              {game.id}
+            <li key={game.id}>
               <p>{game.title}</p>
               <img
                 src={`http://127.0.0.1:5000/games/${game.image_url}`}
                 alt="game image"
               />
               <p>{game.genre}</p>
+              <p>{game.level}</p>
+              <p>{game.trailer}</p>
               <p>{game.description}</p>
               <p>{game.rating}</p>
               <p>{game.price}</p>
